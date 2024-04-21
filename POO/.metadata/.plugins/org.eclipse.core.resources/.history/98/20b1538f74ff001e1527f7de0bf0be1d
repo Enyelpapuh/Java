@@ -1,0 +1,31 @@
+package ejercicio1;
+
+import javax.swing.JOptionPane;
+
+public class CiudadPorPais {
+
+    public static void main(String[] args) {
+        String[][] paisCiudad = new String[4][4];
+
+        // Pedir al usuario que ingrese los países y las ciudades
+        for (int i = 0; i < 4; i++) {
+            paisCiudad[i][0] = JOptionPane.showInputDialog("Ingrese el nombre del país " + (i + 1) + ":");
+
+            for (int j = 1; j <= 3; j++) { // Iterar sobre las 3 ciudades
+                paisCiudad[i][j] = JOptionPane.showInputDialog("Ingrese una ciudad para " + paisCiudad[i][0] + ":");
+            }
+        }
+
+        // Construir el mensaje con la lista de ciudades por país
+        String mensaje = "";
+        for (int i = 0; i < 4; i++) {
+            mensaje += "Ciudades de " + paisCiudad[i][0] + ":\n";
+            for (int j = 1; j <= 3; j++) { // Iterar sobre las 3 ciudades
+                mensaje += "- " + paisCiudad[i][j] + "\n";
+            }
+            mensaje += "\n"; // Salto de línea después de las 3 ciudades de cada país
+        }
+
+        JOptionPane.showMessageDialog(null, mensaje);
+    }
+}

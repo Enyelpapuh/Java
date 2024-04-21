@@ -1,0 +1,53 @@
+package ejercicio4;
+
+import java.util.Scanner;
+
+public class VentasCompania {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        // Crear un arreglo bidimensional para almacenar las ventas
+        double[][] ventas = new double[5][6]; // 5 productos y 4 vendedores
+
+        // Leer las notas de venta del mes pasado
+        for (int vendedor = 1; vendedor <= 4; vendedor++) {
+            System.out.println("Vendedor " + vendedor);
+            for (int producto = 1; producto <= 5; producto++) {
+                System.out.print("Producto " + producto + ": ");
+                ventas[producto][vendedor] = scanner.nextDouble();
+            }
+        }
+
+        // Calcular las ventas totales por producto y por vendedor
+        double[] totalPorProducto = new double[6];
+        double[] totalPorVendedor = new double[5];
+
+        for (int producto = 1; producto <= 5; producto++) {
+            for (int vendedor = 1; vendedor <= 4; vendedor++) {
+                totalPorProducto[producto] += ventas[producto][vendedor];
+                totalPorVendedor[vendedor] += ventas[producto][vendedor];
+            }
+        }
+
+        // Imprimir los resultados en formato tabular
+        System.out.println("\nVentas por Vendedor y Producto:");
+        System.out.print("          ");
+        for (int vendedor = 1; vendedor <= 4; vendedor++) {
+            System.out.printf("V%d    ", vendedor);
+        }
+        System.out.println("Total");
+
+        for (int producto = 1; producto <= 5; producto++) {
+            System.out.printf("Producto %d: ", producto);
+            for (int vendedor = 1; vendedor <= 4; vendedor++) {
+                System.out.printf("%.2f  ", ventas[producto][vendedor]);
+            }
+            System.out.printf("%.2f%n", totalPorProducto[producto]);
+        }
+
+        System.out.println("\nTotal por Vendedor:");
+        for (int vendedor = 1; vendedor <= 4; vendedor++) {
+            System.out.printf("Vendedor %d: %.2f%n", vendedor, totalPorVendedor[vendedor]);
+        }
+    }
+}

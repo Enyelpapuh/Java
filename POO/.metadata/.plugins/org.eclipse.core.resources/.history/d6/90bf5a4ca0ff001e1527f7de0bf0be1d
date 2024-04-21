@@ -1,0 +1,61 @@
+package ejercicio4;
+
+import java.util.Scanner;
+
+public class VentasCompania {
+    public static void main(String[] args) {
+
+        // Crear un arreglo bidimensional para almacenar las ventas
+        double[][] ventas = new double[6][5]; // 5 productos y 4 vendedores
+
+        // Leer las notas de venta del mes pasado
+        for (int vendedor = 1; vendedor <= 4; vendedor++) {
+            System.out.println("Vendedor " + vendedor);
+            for (int producto = 1; producto <= 5; producto++) {
+                double precio = Math.random() * (200 - 50 + 1) + 50; // Generar un precio aleatorio entre 50 y 200
+                System.out.printf("Producto %d (precio %.2f): ", producto, precio);
+            }
+        }
+
+        // Calcular las ventas totales por producto y por vendedor
+        double[] totalPorProducto = new double[6];
+        double[] totalPorVendedor = new double[5];
+
+        for (int producto = 1; producto <= 5; producto++) {
+            for (int vendedor = 1; vendedor <= 4; vendedor++) {
+                totalPorProducto[producto] += ventas[producto][vendedor];
+                totalPorVendedor[vendedor] += ventas[producto][vendedor];
+            }
+        }
+
+        // Imprimir los resultados en formato tabular
+        System.out.println("\nVentas por Vendedor y Producto:");
+        System.out.print("          ");
+        for (int vendedor = 1; vendedor <= 4; vendedor++) {
+            System.out.printf("V%d    ", vendedor);
+        }
+        System.out.println("Total");
+
+        for (int producto = 1; producto <= 5; producto++) {
+            System.out.printf("Producto %d: ", producto);
+            for (int vendedor = 1; vendedor <= 4; vendedor++) {
+                System.out.printf("%.2f  ", ventas[producto][vendedor]);
+            }
+            System.out.printf("%.2f%n", totalPorProducto[producto]);
+        }
+
+        // Imprimir los totales por vendedor
+        System.out.print("Totales:   ");
+        double totalGeneral = 0;
+        for (int vendedor = 1; vendedor <= 4; vendedor++) {
+            double totalVendedor = 0;
+            for (int producto = 1; producto <= 5; producto++) {
+                totalVendedor += ventas[producto][vendedor];
+            }
+            System.out.printf("%.2f  ", totalVendedor);
+            totalGeneral += totalVendedor;
+        }
+        System.out.printf("%.2f%n", totalGeneral);
+    }
+}
+

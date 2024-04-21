@@ -1,0 +1,26 @@
+package ejercicio2;
+
+import javax.swing.JOptionPane;
+
+public class SumaDiagonal {
+
+	public static void main(String[] args) {
+		String inputstr;
+		int tamMatriz;
+		do {
+		
+		inputstr = JOptionPane.showInputDialog("Ingrese EL tamano de la raiz cuadrada");
+		tamMatriz = Integer.parseInt(inputstr);
+		
+		if (tamMatriz <=0) {
+			
+			JOptionPane.showMessageDialog(null,"la matriz debe ser de temaño positivo");
+			
+		}
+		}while(tamMatriz <= 0);
+		
+		JOptionPane.showMessageDialog(null, "hola mundo", inputstr, tamMatriz);
+
+	}
+
+}

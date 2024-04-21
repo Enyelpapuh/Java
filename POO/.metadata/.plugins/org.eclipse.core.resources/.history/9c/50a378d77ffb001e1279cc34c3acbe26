@@ -1,0 +1,32 @@
+package ejercicio1;
+
+import javax.swing.JOptionPane;
+
+public class PedirNum {
+
+	public static void main(String[] args) {
+		
+		
+		String num1 = JOptionPane.showInputDialog("Ingrese el primer numero:");
+		double numero1 = Double.parseDouble(num1);
+		
+		String num2 = JOptionPane.showInputDialog("Ingrese el segundo numero:");
+		double numero2 = Double.parseDouble(num2);
+		
+		double suma = numero1 + numero2;
+		double producto = numero1 * numero2;
+		double diferencial = numero1 - numero2;
+        double cociente = numero2 != 0 ? numero1 / numero2 : Double.POSITIVE_INFINITY;
+
+        String mensaje = "Suma: " + suma + "\n" +
+                         "Producto: " + producto + "\n" +
+                         "Diferencia: " + diferencial + "\n" +
+                         "Cociente: " + cociente;
+
+        JOptionPane.showMessageDialog(null, mensaje);
+
+		
+
+	}
+
+}

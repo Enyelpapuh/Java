@@ -1,0 +1,82 @@
+package ejercicio3;
+
+import javax.swing.JOptionPane;
+
+public class Encuesta {
+
+    public static void main(String[] args) {
+        realizarEncuesta();
+    }
+
+    public static void realizarEncuesta() {
+        String[] opcionesGenero = new String[] { "Masculino", "Femenino" };
+        String[] opcionesEstadoLaboral = new String[] { "Trabajo", "No trabajo" };
+
+        int[] genero = new int[10];
+        int[] estadoLaboral = new int[10];
+        double[] sueldo = new double[10];
+
+        JOptionPane.showMessageDialog(null, "Este programa realiza una encuesta a 10 personas");
+
+        for (int i = 0; i < 10; i++) {
+            int respuestaGenero = JOptionPane.showOptionDialog(null, "Escoja su sexo", "Encuesta",
+                    JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE, null, opcionesGenero,
+                    opcionesGenero[0]);
+
+            genero[i] = respuestaGenero;
+
+            int respuestaEstadoLaboral = JOptionPane.showOptionDialog(null, "¿Usted Trabaja?", "Encuesta",
+                    JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE, null, opcionesEstadoLaboral,
+                    opcionesEstadoLaboral[0]);
+
+            estadoLaboral[i] = respuestaEstadoLaboral;
+
+            if (estadoLaboral[i] == 1) {
+                sueldo[i] = Math.random() * (2000 - 600 + 1) + 600;
+            } else {
+                sueldo[i] = 0;
+            }
+        }
+
+        calcularResultados(genero, estadoLaboral, sueldo);
+    }
+
+    public static void calcularResultados(int[] genero, int[] estadoLaboral, double[] sueldo) {
+        double mujeres = 0, mujeresTrabajadoras = 0, hombres = 0, hombresTrabajadores = 0;
+        double sueldoPromedioMujeres = 0, sueldoPromedioHombres = 0;
+
+        for (int i = 0; i < genero.length; i++) {
+            if (genero[i] == 1) { // Hombre
+                hombres++;
+                if (estadoLaboral[i] == 0) { // Trabaja
+                    hombresTrabajadores++;
+                    sueldoPromedioHombres += sueldo[i];
+                }
+            } else { // Mujer
+                mujeres++;
+                if (estadoLaboral[i] == 0) { // Trabaja
+                    mujeresTrabajadoras++;
+                    sueldoPromedioMujeres += sueldo[i];
+                }
+            }
+        }
+
+        mujeres = (mujeres / genero.length) * 100;
+        hombres = (hombres / genero.length) * 100;
+
+        mujeresTrabajadoras = (mujeresTrabajadoras / genero.length) * 100;
+        hombresTrabajadores = (hombresTrabajadores / genero.length) * 100;
+
+        sueldoPromedioMujeres /= mujeresTrabajadoras;
+        sueldoPromedioHombres /= hombresTrabajadores;
+
+        String mensaje = String.format("El porcentaje de mujeres es: %.0f%n", mujeres);
+        mensaje += String.format("El porcentaje de hombres es: %.0f%n", hombres);
+        mensaje += String.format("El porcentaje de mujeres que trabajan es: %.0f%n", mujeresTrabajadoras);
+        mensaje += String.format("El porcentaje de hombres que trabajan es: %.0f%n", hombresTrabajadores);
+        mensaje += String.format("El sueldo promedio de las mujeres que trabajan es: %.2f%n", sueldoPromedioMujeres);
+        mensaje += String.format("El sueldo promedio de los hombres que trabajan es: %.2f%n", sueldoPromedioHombres);
+
+        JOptionPane.showMessageDialog(null, mensaje);
+    }
+}
