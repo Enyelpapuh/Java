@@ -1,4 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<session version="1.0">
-<refactoring comment="Copy 2 elements to &apos;laboratorio2/src/ejercicio10&apos;&#x0D;&#x0A;- Original project: &apos;classpract2&apos;&#x0D;&#x0A;- Destination element: &apos;laboratorio2/src/ejercicio10&apos;&#x0D;&#x0A;- Original elements:&#x0D;&#x0A;     PruebaFactura.java&#x0D;&#x0A;     Factura.java" description="Copy files" destination="=laboratorio2/src&lt;ejercicio10" element1="sistematico/src/factura/PruebaFactura.java" element2="sistematico/src/factura/Factura.java" files="2" flags="589830" folders="0" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1713129213176" units="0" version="1.0"/>
-</session>
